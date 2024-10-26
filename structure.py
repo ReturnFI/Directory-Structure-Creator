@@ -15,7 +15,7 @@ def create_structure_from_file(file_path):
         for line in lines:
             level = line.count("    ")
             item = line.strip(" ├─└│ \n")
-
+            
             if item.endswith('/'):
                 base_path = os.path.join(base_path, item.strip('/'))
                 os.makedirs(base_path, exist_ok=True)
@@ -29,7 +29,7 @@ def create_structure_from_file(file_path):
             if lines.index(line) < len(lines) - 1:
                 next_level = lines[lines.index(line) + 1].count("    ")
                 if next_level < level:
-                    base_path = "/".join(base_path.split('/')[:next_level])
+                    base_path = os.path.dirname(base_path)
 
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' was not found.")
