@@ -1,0 +1,8 @@
+dashboard/
+├── index.html
+├── style.css
+├── script.js
+├── pages/
+│   ├── index.html
+│   ├── users.html
+│   └── settings.html
